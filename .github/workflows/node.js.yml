@@ -2,14 +2,13 @@ name: Development
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+    - main
   pull_request:
-    branches: [ "main" ]
-    types:
-    - opened
-    - edited
-    - synchonize
-    - reopened
+    types: [opened, synchorize, reopened]
+    branches:
+    - main
+    
 
 jobs:
   test:
