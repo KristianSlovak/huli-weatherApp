@@ -1,0 +1,16 @@
+{
+  "name": "huli-weatherapp",
+  "version": "1.0.0",
+  "description": "What's the weather like outside? Don't look out the window. Program an app instead.\r ## Base functionality\r - Fetch data for your city from openweathermap.org API or similar\r - Display information that you find relevant\r - Current data & forecast\r - Use this opportunity to play with CSS animations\r - Explore frameworks like tailwind, bootstrap or similar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "frontend/*",
+    "backend/*"
+  ]
+}
