@@ -1,0 +1,36 @@
+name: Development
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    types:
+    - opened
+    - edited
+    - synchonize
+    - reopened
+
+jobs:
+  test:
+    name: Test application
+    runs-on: ubuntu-latest
+    steps:
+    - name: "checkout repository"
+    - uses: actions/checkout@v3
+    - name: "setup node"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+    - name: "install npm@latest"
+      run: npm i -g npm@latest
+      
+    - name: "install dependencies"
+      run: npm install
+      
+    - name: "run tests"
+      run: npm test
+      
+    - run: npm ci
+    - run: npm run build --if-present
