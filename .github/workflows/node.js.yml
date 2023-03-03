@@ -29,7 +29,7 @@ jobs:
       run: npm i -g npm@latest
       
     - name: "install dependencies"
-      working-directory: ${matrix.frontend}, ${matrix.backend}
+      working-directory: ${matrix.dir.frontend}, ${matrix.dir.backend}
       run: npm install
       
     - name: "run tests"
