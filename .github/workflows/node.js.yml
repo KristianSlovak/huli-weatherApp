@@ -28,7 +28,7 @@ jobs:
       run: npm i -g npm@latest
       
     - name: "install dependencies"
-      working-directory: matrix.frontend, matrix.backend
+      working-directory: frontend
       run: npm install
       
     - name: "run tests"
