@@ -12,6 +12,11 @@ function Inputs({setQuery, units, setUnits}) {
     if(city !== '') setQuery({q:city})
   }
 
+  const handleEnterPress = (e) => {
+    if(e.key === "Enter"){
+      setQuery({q:city})
+    }
+  }
   const handleUnitsChange = (e) => {
     const selectedUnit = {units: e.currentTarget.name};
     if(units !== selectedUnit) setUnits(selectedUnit)
@@ -42,11 +47,13 @@ function Inputs({setQuery, units, setUnits}) {
           type='text'
           placeholder='search for city'
           className='placeholder:lowercase text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize'
+          onKeyDown={handleEnterPress}
         />
         <UilSearch 
           size={25} 
           className='text-white cursor-pointer transition ease-out hover:scale-125'
-          onClick={handleSearchClick}/>
+          onClick={handleSearchClick}
+          />
         <UilMapMarkerAlt 
           size={25} 
           className='text-white cursor-pointer transition ease-out hover:scale-125'
