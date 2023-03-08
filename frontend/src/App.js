@@ -3,7 +3,7 @@ import Inputs from './components/Inputs';
 import TimeAndLocation from './components/TimeAndLocation';
 import TemperatureAndDetails from './components/TemperatureAndDetails';
 import Forecast from './components/Forecast';
-import getFormattedWeatherData from './hooks/getWeatherData';
+import getFormattedWeatherData from './hooks/weatherData';
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +14,7 @@ function App() {
   const [weather, setWeather] = useState(null)
 
   useEffect(() => {
+    console.log(process.env)
     const fetchWeather = async () => {
       const message = query.q ? query.q : 'current location.'
 
@@ -50,7 +51,7 @@ function App() {
         <Forecast title='Daily Forcast' items={weather.daily}/>
         </div>
   )}
-  <ToastContainer autoClose={3000} theme='colored' newestOnTop={true}/>
+  <ToastContainer autoClose={4000} theme='colored' newestOnTop={true}/>
     </div>
   );
 }

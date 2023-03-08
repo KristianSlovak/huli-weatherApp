@@ -1,5 +1,5 @@
 import React from 'react'
-import { iconUrlFromCode } from '../hooks/getWeatherData'
+import { iconUrlFromCode } from '../hooks/weatherData'
 
 function Forecast({title, items}) {
   return (

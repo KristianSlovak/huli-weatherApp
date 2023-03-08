@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatToLocalTime } from '../hooks/getWeatherData'
+import { formatToLocalTime } from '../hooks/weatherData'
 
 function TimeAndLocation({weather: {dt, timezone, name, country}}) {
   return (
