@@ -1,11 +1,11 @@
 import {DateTime} from 'luxon'
-const API_KEY = 'b8abfb19b7b574d8bddee51303350b9d'
+const apiKey = 'b8abfb19b7b574d8bddee51303350b9d'
 const BASE_URL = 'https://api.openweathermap.org/data/2.5'
 const fetch = require('node-fetch')
 
 const getWeatherData = (infoType, searchParams) => {
     const url = new URL(BASE_URL + '/' + infoType)
-    url.search = new URLSearchParams({...searchParams, appid:API_KEY})
+    url.search = new URLSearchParams({...searchParams, appid:apiKey})
 
     return fetch(url)
     .then((res) => res.json())
