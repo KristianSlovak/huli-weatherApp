@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Signup() {
   return (
@@ -24,9 +25,11 @@ function Signup() {
             className=" tracking-wide text-2xl px-1 py-3 border border-slate-500"
             placeholder="Password"
           />
-          <button className="tracking-wider text-white text-xl bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400 px-32 py-5 my-6">
-            Sign up
-          </button>
+          <Link to={"/"}>
+            <button className="tracking-wider text-white text-xl bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400 px-32 py-5 my-6">
+              Login
+            </button>
+          </Link>
         </form>
       </div>
     </div>

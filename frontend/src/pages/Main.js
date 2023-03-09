@@ -1,4 +1,5 @@
 import TopButtons from "../components/TopButtons";
+import AppBar from "../components/AppBar";
 import Inputs from "../components/Inputs";
 import TimeAndLocation from "../components/TimeAndLocation";
 import TemperatureAndDetails from "../components/TemperatureAndDetails";
@@ -8,7 +9,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Main() {
-  const [query, setQuery] = useState({ q: "berlin" });
+  const [query, setQuery] = useState({ q: "" });
   const [units, setUnits] = useState({ units: "metric" });
   const [weather, setWeather] = useState(null);
 
@@ -36,23 +37,26 @@ function Main() {
   };
 
   return (
-    <div
-      className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700
-     to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
-    >
-      <TopButtons setQuery={setQuery} />
-      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+    <div>
+      <AppBar />
+      <div
+        className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700
+      to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
+      >
+        <TopButtons setQuery={setQuery} />
+        <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
-      {weather && (
-        <div>
-          <TimeAndLocation weather={weather} />
-          <TemperatureAndDetails weather={weather} />
+        {weather && (
+          <div>
+            <TimeAndLocation weather={weather} />
+            <TemperatureAndDetails weather={weather} />
 
-          <Forecast title="Hourly Forcast" items={weather.hourly} />
-          <Forecast title="Daily Forcast" items={weather.daily} />
-        </div>
-      )}
-      <ToastContainer autoClose={4000} theme="colored" newestOnTop={true} />
+            <Forecast title="Hourly Forcast" items={weather.hourly} />
+            <Forecast title="Daily Forcast" items={weather.daily} />
+          </div>
+        )}
+        <ToastContainer autoClose={4000} theme="colored" newestOnTop={true} />
+      </div>
     </div>
   );
 }
