@@ -9,7 +9,30 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Main() {
-  const [query, setQuery] = useState({ q: "" });
+  const cities = [
+    {
+      id: 1,
+      title: "London",
+    },
+    {
+      id: 2,
+      title: "Sydney",
+    },
+    {
+      id: 3,
+      title: "Tokyo",
+    },
+    {
+      id: 4,
+      title: "Toronto",
+    },
+    {
+      id: 5,
+      title: "Paris",
+    },
+  ];
+
+  const [query, setQuery] = useState({ q: cities[0].title });
   const [units, setUnits] = useState({ units: "metric" });
   const [weather, setWeather] = useState(null);
 
@@ -43,7 +66,7 @@ function Main() {
         className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700
       to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
-        <TopButtons setQuery={setQuery} />
+        <TopButtons setQuery={setQuery} cities={cities} />
         <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
         {weather && (
