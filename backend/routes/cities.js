@@ -1,0 +1,3 @@
+const requireAuth = require("../middleware/requireAuth");
+
+router.use(requireAuth);
