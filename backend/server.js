@@ -1,31 +1,11 @@
 require("dotenv").config({ path: "../.env" });
 
-const mysql = require("mysql");
-const userRoutes = require("./routes/user");
 const express = require("express");
+const mongoose = require("mongoose");
+const userRoutes = require("./routes/user");
 const app = express();
 
-const conn = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: process.env.SERVER_SIDE_PASSWORD,
-  database: process.env.SERVER_SIDE_DATABASE,
-});
-
-const userSchema = `CREATE TABLE IF NOT EXISTS users (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL
-)`;
-
-conn.query(userSchema, function (err, res, fields) {
-  if (err) {
-    console.error(err);
-    return;
-  } else {
-    console.log("UserTable created successfully!");
-  }
-});
+app.use(express.json());
 
 app.use("/api/user", userRoutes);
 
@@ -33,15 +13,16 @@ app.get("/", (req, res) => {
   console.log("hello world");
 });
 
-app.get("/hello", (req, res) => {
-  req.headers.accept = "application/json";
-  conn.query("SELECT * FROM users", (err, rows) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    res.status(200).json(rows);
+mongoose
+  .connect(process.env.SERVER_SIDE_CONNECTION)
+  .then(() => {
+    app.listen(process.env.SERVER_SIDE_PORT, () => {
+      console.log(
+        "connected to db & listening to port",
+        process.env.SERVER_SIDE_PORT
+      );
+    });
+  })
+  .catch((error) => {
+    console.log(error);
   });
-});
-
-app.listen(process.env.SERVER_SIDE_PORT);
