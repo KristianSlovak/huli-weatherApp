@@ -8,8 +8,12 @@ import getFormattedWeatherData from "../hooks/weatherData";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useCitiesContext } from "../hooks/useCitiesContext";
 function Main() {
-  const cities = [
+  const { user } = useAuthContext();
+  const { cities, dispatch } = useCitiesContext();
+  const citiess = [
     {
       id: 1,
       title: "London",
@@ -32,7 +36,24 @@ function Main() {
     },
   ];
 
-  const [query, setQuery] = useState({ q: cities[0].title });
+  useEffect(() => {
+    const fetchCities = async () => {
+      const response = await fetch("/api/cities", {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
+      const json = await response.json();
+
+      if (response.ok) {
+        dispatch({ type: "SET_CITIES", payload: json });
+      }
+    };
+
+    if (user) {
+      fetchCities();
+    }
+  }, [dispatch, user]);
+
+  const [query, setQuery] = useState({ q: null });
   const [units, setUnits] = useState({ units: "metric" });
   const [weather, setWeather] = useState(null);
 
@@ -66,7 +87,10 @@ function Main() {
         className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700
       to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
-        <TopButtons setQuery={setQuery} cities={cities} />
+        {cities &&
+          cities.map((city) => (
+            <TopButtons key={city._id} setQuery={setQuery} city={city} />
+          ))}
         <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
         {weather && (
