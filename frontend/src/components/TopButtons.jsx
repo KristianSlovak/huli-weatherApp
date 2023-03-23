@@ -3,7 +3,7 @@ import { UilTrashAlt } from "@iconscout/react-unicons";
 import { useCitiesContext } from "../hooks/useCitiesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-export default function TopButtons({ setQuery, city }) {
+export default function TopButtons({ city, setQuery }) {
   const { dispatch } = useCitiesContext();
   const { user } = useAuthContext();
 
@@ -23,21 +23,16 @@ export default function TopButtons({ setQuery, city }) {
     }
   };
   return (
-    <div className="flex items-center justify-around my-6">
-      <div className="flex flex-row gap-2">
-        <button
-          className="text-white text-lg font-medium"
-          onClick={() => setQuery({ q: city.name })}
-        >
-          {city.name}
-        </button>
-        <div className="flex flex-row items-center gap-1">
-          <button onClick={handleClick}>
-            <UilTrashAlt className="text-white w-5 h-5" />
-          </button>
-          <p className="text-white">|</p>
-        </div>
-      </div>
+    <div className="flex items-center gap-2">
+      <button
+        className="text-white text-lg font-medium"
+        onClick={() => setQuery({ q: city.cityName })}
+      >
+        {city.cityName}
+      </button>
+      <button onClick={handleClick}>
+        <UilTrashAlt className="text-white w-5 h-5" />
+      </button>
     </div>
   );
 }

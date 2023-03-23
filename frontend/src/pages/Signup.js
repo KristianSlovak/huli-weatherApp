@@ -4,12 +4,15 @@ import { UilEyeSlash } from "@iconscout/react-unicons";
 import { useState } from "react";
 import AppBar from "../components/AppBar";
 import { useSignup } from "../hooks/useSignup";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
   const textInput = useRef(null);
+  const navigate = useNavigate();
+
   const handleHidden = () => {
     if (textInput.current.type === "password") {
       textInput.current.type = "text";
@@ -19,20 +22,25 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await signup(email, password);
+
+    if ((email !== "") & (password !== "")) {
+      setEmail("");
+      setPassword("");
+      navigate("/");
+    }
   };
 
   return (
     <div>
       <AppBar />
-      <div className="h-screen flex justify-center items-center">
-        <div className="bg-slate-200 mx-auto max-w-screen-md mt-4 py-5 px-32 shadow-xl">
+      <div className="h-auto flex justify-center items-center">
+        <div className="bg-slate-200 mx-auto h-auto max-w-screen-md mt-16 py-5 px-32 shadow-xl">
           <form
-            className="flex flex-col gap-y-4 justify-center items-center"
+            className="grid grid-flow-row gap-12 justify-center items-center"
             onSubmit={handleSubmit}
           >
-            <h1 className="tracking-widest text-3xl p-2">Sign Up</h1>
+            <h1 className="py-5 tracking-widest text-3xl">Sign-up</h1>
             <label className="mr-40 w-fit tracking-wider text-2xl font-light">
               Email:
             </label>
@@ -60,7 +68,7 @@ function Signup() {
                 ref={textInput}
                 type="password"
                 name="password"
-                className=" tracking-wide text-2xl px-1 py-3 border border-slate-500"
+                className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
                 placeholder="Password"
               />
             </div>

@@ -6,7 +6,7 @@ import {
   UilSun,
   UilSunset,
 } from "@iconscout/react-unicons";
-import { formatToLocalTime, iconUrlFromCode } from "../hooks/weatherData";
+import { formatToLocalTime, iconUrlFromCode } from "../hooks/useWeatherData";
 function TemperatureAndDetails({
   weather: {
     details,

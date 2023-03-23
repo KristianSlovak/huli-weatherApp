@@ -14,7 +14,7 @@ export const cityReducer = (state, action) => {
       };
     case "DELETE_CITY":
       return {
-        cities: state.cities.filter((w) => w._id !== action.payload._id),
+        cities: state.cities.filter((c) => c._id !== action.payload._id),
       };
     default:
       return state;

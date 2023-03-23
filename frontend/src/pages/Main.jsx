@@ -4,37 +4,19 @@ import Inputs from "../components/Inputs";
 import TimeAndLocation from "../components/TimeAndLocation";
 import TemperatureAndDetails from "../components/TemperatureAndDetails";
 import Forecast from "../components/Forecast";
-import getFormattedWeatherData from "../hooks/weatherData";
+import getFormattedWeatherData from "../hooks/useWeatherData";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCitiesContext } from "../hooks/useCitiesContext";
+
 function Main() {
   const { user } = useAuthContext();
   const { cities, dispatch } = useCitiesContext();
-  const citiess = [
-    {
-      id: 1,
-      title: "London",
-    },
-    {
-      id: 2,
-      title: "Sydney",
-    },
-    {
-      id: 3,
-      title: "Tokyo",
-    },
-    {
-      id: 4,
-      title: "Toronto",
-    },
-    {
-      id: 5,
-      title: "Paris",
-    },
-  ];
+  const [query, setQuery] = useState({ q: null });
+  const [units, setUnits] = useState({ units: "metric" });
+  const [weather, setWeather] = useState(null);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -51,11 +33,11 @@ function Main() {
     if (user) {
       fetchCities();
     }
-  }, [dispatch, user]);
+  }, [user, dispatch]);
 
-  const [query, setQuery] = useState({ q: null });
-  const [units, setUnits] = useState({ units: "metric" });
-  const [weather, setWeather] = useState(null);
+  useEffect(() => {
+    setQuery({ q: cities && cities[0].cityName });
+  }, [cities]);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -69,8 +51,12 @@ function Main() {
         setWeather(data);
       });
     };
+
     fetchWeather();
-  }, [query, units]);
+
+    console.log(user);
+    console.log(query);
+  }, [user, query, units]);
 
   const formatBackground = () => {
     if (!weather) return "from-cyan-700 to-blue-700";
@@ -79,29 +65,31 @@ function Main() {
 
     return "from-yellow-700 to-orange-700";
   };
-
   return (
     <div>
-      <AppBar />
+      <AppBar setQuery={setQuery} />
       <div
         className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700
       to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
-        {cities &&
-          cities.map((city) => (
-            <TopButtons key={city._id} setQuery={setQuery} city={city} />
-          ))}
+        <div className="flex justify-between my-6">
+          {cities &&
+            cities.map((city) => (
+              <div className="flex w-full justify-around items-center">
+                <TopButtons key={city._id} city={city} setQuery={setQuery} />
+                <p className=" text-white">|</p>
+              </div>
+            ))}
+        </div>
         <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
-
-        {weather && (
+        {weather ? (
           <div>
             <TimeAndLocation weather={weather} />
             <TemperatureAndDetails weather={weather} />
-
             <Forecast title="Hourly Forcast" items={weather.hourly} />
             <Forecast title="Daily Forcast" items={weather.daily} />
           </div>
-        )}
+        ) : null}
         <ToastContainer autoClose={4000} theme="colored" newestOnTop={true} />
       </div>
     </div>

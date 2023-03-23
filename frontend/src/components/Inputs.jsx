@@ -5,15 +5,17 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Inputs({ setQuery, units, setUnits }) {
-  const [city, setcity] = useState("");
+  const [city, setCity] = useState("");
 
   const handleSearchClick = () => {
     if (city !== "") setQuery({ q: city });
+    setCity("");
   };
 
   const handleEnterPress = (e) => {
     if (e.key === "Enter") {
       setQuery({ q: city });
+      setCity("");
     }
   };
   const handleUnitsChange = (e) => {
@@ -42,7 +44,7 @@ function Inputs({ setQuery, units, setUnits }) {
       <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
         <input
           value={city}
-          onChange={(e) => setcity(e.currentTarget.value)}
+          onChange={(e) => setCity(e.currentTarget.value)}
           type="text"
           placeholder="search for city"
           className="placeholder:lowercase text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize"

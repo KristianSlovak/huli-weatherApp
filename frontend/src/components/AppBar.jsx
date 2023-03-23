@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { UilEstate } from "@iconscout/react-unicons";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
-function AppBar() {
+function AppBar({ setQuery }) {
   const { logout } = useLogout();
   const { user } = useAuthContext();
 
   const handleClick = () => {
     logout();
+    setQuery({ q: null });
   };
 
   return (
@@ -39,13 +40,13 @@ function AppBar() {
             className="p-4 hover:text-sky-800 hover:scale-110 transition ease-out"
             to="/login"
           >
-            Log in
+            Login
           </Link>
           <Link
             className="p-4 hover:text-sky-800 hover:scale-110 transition ease-out"
             to="/signup"
           >
-            Sign up
+            Sign-up
           </Link>
         </ul>
       )}

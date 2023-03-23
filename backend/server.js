@@ -4,17 +4,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const cityRoutes = require("./routes/cities");
+
 const app = express();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
+
 app.use("/api/user", userRoutes);
 
 app.use("/api/cities", cityRoutes);
-
-app.get("/", (req, res) => {
-  console.log("hello world");
-});
 
 mongoose
   .connect(process.env.SERVER_SIDE_CONNECTION)
