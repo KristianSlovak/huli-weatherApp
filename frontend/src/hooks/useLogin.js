@@ -5,12 +5,14 @@ export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
+  const domainFrontend = "weather-app-eta-gules-42.vercel.app";
+  const domainBackend = "weather-app-w95o.vercel.app";
   const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
     const response = await fetch(
-      process.env.REACT_APP_PROXY + "/api/user/login",
+      domainFrontend + "/" + domainBackend + "/api/user/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
