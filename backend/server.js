@@ -1,5 +1,6 @@
 require("dotenv").config({ path: "../.env" });
 
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
@@ -8,6 +9,10 @@ const cityRoutes = require("./routes/cities");
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
+
+app.use;
 
 app.use("/api/user", userRoutes);
 
