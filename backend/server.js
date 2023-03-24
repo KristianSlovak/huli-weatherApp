@@ -10,9 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
-
-app.use;
+app.use(cors({ origin: process.env.SERVER_SIDE_FRONTEND_APP }));
 
 app.use("/api/user", userRoutes);
 
