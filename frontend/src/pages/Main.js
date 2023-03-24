@@ -20,9 +20,12 @@ function Main() {
 
   useEffect(() => {
     const fetchCities = async () => {
-      const response = await fetch("/api/cities", {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_PROXY}/api/cities`,
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {
