@@ -12,10 +12,13 @@ export default function TopButtons({ city, setQuery }) {
       return;
     }
 
-    const response = await fetch("/api/cities/" + city._id, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${user.token}` },
-    });
+    const response = await fetch(
+      process.env.REACT_APP_PROXY + "/api/cities/" + city._id,
+      {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
     const json = await response.json();
 
     if (response.ok) {
