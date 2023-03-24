@@ -10,7 +10,7 @@ export const useSignup = () => {
     setError(null);
 
     const response = await fetch(
-      `${process.env.REACT_APP_PROXY}/api/user/signup`,
+      process.env.REACT_APP_PROXY + "/api/user/signup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

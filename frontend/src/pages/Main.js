@@ -21,7 +21,7 @@ function Main() {
   useEffect(() => {
     const fetchCities = async () => {
       const response = await fetch(
-        `${process.env.REACT_APP_PROXY}/api/cities`,
+        process.env.REACT_APP_PROXY + "/api/cities",
         {
           headers: { Authorization: `Bearer ${user.token}` },
         }
