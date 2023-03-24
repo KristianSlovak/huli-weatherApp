@@ -8,7 +8,14 @@ const cityRoutes = require("./routes/cities");
 
 const app = express();
 
-app.use(cors({ origin: process.env.SERVER_SIDE_FRONTEND_APP }));
+app.use(
+  cors({
+    origin: process.env.SERVER_SIDE_FRONTEND_APP,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
