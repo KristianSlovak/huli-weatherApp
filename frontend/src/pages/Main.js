@@ -56,9 +56,6 @@ function Main() {
     };
 
     fetchWeather();
-
-    console.log(user);
-    console.log(query);
   }, [user, query, units]);
 
   const formatBackground = () => {

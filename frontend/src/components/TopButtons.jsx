@@ -13,9 +13,7 @@ export default function TopButtons({ city, setQuery }) {
     }
 
     const response = await fetch(
-
       process.env.REACT_APP_PROXY + "/api/cities/" + city._id,
-
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user.token}` },
