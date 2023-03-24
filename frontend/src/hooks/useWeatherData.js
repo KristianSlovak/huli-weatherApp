@@ -1,5 +1,4 @@
 import { DateTime } from "luxon";
-const fetch = require("node-fetch");
 
 const getWeatherData = (infoType, searchParams) => {
   const url = new URL(process.env.REACT_APP_BASE_URL + "/" + infoType);
