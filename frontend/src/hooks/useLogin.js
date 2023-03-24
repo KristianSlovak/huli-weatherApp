@@ -5,15 +5,20 @@ export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
+  const domainFrontend = "weather-app-eta-gules-42.vercel.app";
+  const domainBackend = "weather-app-w95o.vercel.app";
   const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    const response = await fetch(
+      domainFrontend + "/" + domainBackend + "/api/user/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
