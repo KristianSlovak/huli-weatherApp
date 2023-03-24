@@ -13,7 +13,6 @@ export const useLogin = () => {
       process.env.REACT_APP_PROXY + "/api/user/login",
       {
         mode: "no-cors",
-        credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
