@@ -24,7 +24,7 @@ function Signup() {
     e.preventDefault();
     await signup(email, password);
 
-    if ((email !== "") & (password !== "")) {
+    if (error && !error) {
       setEmail("");
       setPassword("");
       navigate("/");
@@ -41,36 +41,40 @@ function Signup() {
             onSubmit={handleSubmit}
           >
             <h1 className="py-5 tracking-widest text-3xl">Sign-up</h1>
-            <label className="mr-40 w-fit tracking-wider text-2xl font-light">
-              Email:
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              type="email"
-              name="Email"
-              className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
-              placeholder="Email"
-            />
-            <label className="mr-44 tracking-wider text-2xl font-light">
-              Password:
-            </label>
-            <div className="flex flex-row items-center justify-end">
-              <span
-                className="absolute mr-2 hover:cursor-pointer"
-                onClick={handleHidden}
-              >
-                <UilEyeSlash size={30} />
-              </span>
+            <div className="flex flex-row items-center justify-between w-full">
+              <label className="mr-40 w-fit tracking-wider text-2xl font-light">
+                Email:
+              </label>
               <input
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                ref={textInput}
-                type="password"
-                name="password"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                type="email"
+                name="Email"
                 className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
-                placeholder="Password"
+                placeholder="Email"
               />
+            </div>
+            <div className="flex flex-row items-center justify-between w-full">
+              <label className="mr-44 tracking-wider text-2xl font-light">
+                Password:
+              </label>
+              <div className="flex flex-row items-center justify-end">
+                <span
+                  className="absolute mr-2 hover:cursor-pointer"
+                  onClick={handleHidden}
+                >
+                  <UilEyeSlash size={30} />
+                </span>
+                <input
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  ref={textInput}
+                  type="password"
+                  name="password"
+                  className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
+                  placeholder="Password"
+                />
+              </div>
             </div>
             <button
               disabled={isLoading}
