@@ -12,7 +12,6 @@ export const useLogin = () => {
     const response = await fetch(
       process.env.REACT_APP_PROXY + "/api/user/login",
       {
-        mode: "no-cors",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
