@@ -35,9 +35,9 @@ function Login() {
     <div>
       <AppBar />
       <div className="h-auto flex justify-center items-center">
-        <div className="bg-slate-200 mx-auto h-auto max-w-screen-md mt-16 py-5 px-32 shadow-xl">
+        <div className="bg-slate-200 mx-auto mt-16 py-5 px-32 shadow-xl">
           <form
-            className="grid grid-flow-row gap-12 justify-center items-center"
+            className="grid grid-flow-row gap-16 justify-center items-center"
             onSubmit={handleSubmit}
           >
             <h1 className="py-5 tracking-widest text-3xl">Login</h1>
