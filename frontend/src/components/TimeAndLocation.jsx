@@ -31,14 +31,17 @@ function TimeAndLocation({ weather: { dt, timezone, name, country } }) {
     } else {
       const city = { cityName, cityCountry };
 
-      const response = await fetch("/api/cities", {
-        method: "POST",
-        body: JSON.stringify(city),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        process.env.REACT_APP_PROXY + "/api/cities",
+        {
+          method: "POST",
+          body: JSON.stringify(city),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       const json = await response.json();
 
       if (!response.ok) {
