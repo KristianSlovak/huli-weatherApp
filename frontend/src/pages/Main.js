@@ -14,7 +14,7 @@ import { useCitiesContext } from "../hooks/useCitiesContext";
 function Main() {
   const { user } = useAuthContext();
   const { cities, dispatch } = useCitiesContext();
-  const [query, setQuery] = useState({ q: null });
+  const [query, setQuery] = useState({ q: "London" });
   const [units, setUnits] = useState({ units: "metric" });
   const [weather, setWeather] = useState(null);
 
@@ -37,12 +37,6 @@ function Main() {
       fetchCities();
     }
   }, [user, dispatch]);
-
-  useEffect(() => {
-    if (cities !== null) {
-      setQuery({ q: cities && cities[0].cityName });
-    }
-  }, [cities]);
 
   useEffect(() => {
     const fetchWeather = async () => {
