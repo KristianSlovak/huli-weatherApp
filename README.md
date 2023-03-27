@@ -5,6 +5,8 @@
 - Display relevant information
 - Current data & forecast
 - Using taiwind, React, Express, node.js, mongoDB
+- Signup Login
+- Saving favorite cities for users
 
 ## Deploy
 - Fork this repository
