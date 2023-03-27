@@ -39,7 +39,9 @@ function Main() {
   }, [user, dispatch]);
 
   useEffect(() => {
-    setQuery({ q: cities && cities[0].cityName });
+    if (cities !== null) {
+      setQuery({ q: cities && cities[0].cityName });
+    }
   }, [cities]);
 
   useEffect(() => {
