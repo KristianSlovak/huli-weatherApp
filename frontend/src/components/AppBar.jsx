@@ -14,13 +14,14 @@ function AppBar({ setQuery }) {
 
   return (
     <div
-      className="grid grid-flow-col items-center gap-6 mx-auto w-screen pl-20
-    h-20 pr-20 bg-gradient-to-br from-cyan-600 to-blue-600
-    text-white text-xl font-medium shadow-lg shadow-gray-400"
+      className="grid grid-flow-col items-center gap-6 mx-auto w-screen px-5
+      md:px-20
+    h-20 bg-gradient-to-br from-cyan-600 to-blue-600
+    text-white text-base md:text-xl font-medium shadow-lg shadow-gray-400"
     >
       <div className="justify-self-start">
         <Link to="/">
-          <UilEstate className="w-10 h-10 hover:text-sky-800 transition ease-out" />
+          <UilEstate className="w-7 h-7 hover:text-sky-800 transition ease-out md:w-10 md:h-10" />
         </Link>
       </div>
       {user && (

@@ -40,14 +40,14 @@ function Inputs({ setQuery, units, setUnits }) {
   };
 
   return (
-    <div className="flex flex-row justify-center my-6">
+    <div className="flex flex-row justify-center my-6 gap-5">
       <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
         <input
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
           type="text"
           placeholder="search for city"
-          className="placeholder:lowercase text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize"
+          className="placeholder:lowercase text-xs md:text-xl font-light p-2 w-2/3 shadow-xl focus:outline-none capitalize"
           onKeyDown={handleEnterPress}
         />
         <UilSearch
@@ -65,15 +65,15 @@ function Inputs({ setQuery, units, setUnits }) {
       <div className="flex flex-row w-1/4 items-center justify-center">
         <button
           name="metric"
-          className="text-xl text-white font-light hover:scale-125 transition ease-out"
+          className="text-lg md:text-xl text-white font-light hover:scale-125 transition ease-out"
           onClick={handleUnitsChange}
         >
           °C
         </button>
-        <p className="text-xl text-white mx-1">|</p>
+        <p className="text-lg md:text-xl text-white mx-1">|</p>
         <button
           name="imperial"
-          className="text-xl text-white font-light hover:scale-125 transition ease-out"
+          className="text-lg md:text-xl text-white font-light hover:scale-125 transition ease-out"
           onClick={handleUnitsChange}
         >
           °F
