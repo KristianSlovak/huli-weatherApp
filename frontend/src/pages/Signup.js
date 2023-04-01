@@ -3,13 +3,13 @@ import { useRef } from "react";
 import { UilEyeSlash } from "@iconscout/react-unicons";
 import { useState } from "react";
 import AppBar from "../components/AppBar";
-import { useLogin } from "../hooks/useLogin";
+import { useSignup } from "../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, isLoading } = useLogin();
+  const { signup, error, isLoading } = useSignup();
   const textInput = useRef(null);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
+    await signup(email, password);
 
     if (error && !error) {
       setEmail("");
