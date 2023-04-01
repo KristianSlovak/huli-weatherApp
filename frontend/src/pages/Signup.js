@@ -3,13 +3,13 @@ import { useRef } from "react";
 import { UilEyeSlash } from "@iconscout/react-unicons";
 import { useState } from "react";
 import AppBar from "../components/AppBar";
-import { useSignup } from "../hooks/useSignup";
+import { useLogin } from "../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, error, isLoading } = useSignup();
+  const { login, error, isLoading } = useLogin();
   const textInput = useRef(null);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(email, password);
+    await login(email, password);
 
     if (error && !error) {
       setEmail("");
@@ -40,25 +40,27 @@ function Signup() {
             className="grid grid-flow-row gap-16 justify-center items-center"
             onSubmit={handleSubmit}
           >
-            <h1 className="py-5 tracking-widest text-3xl">Sign-up</h1>
-            <div className="flex flex-row items-center justify-between w-full">
-              <label className="mr-40 w-fit tracking-wider text-2xl font-light">
+            <h1 className="py-5 tracking-widest text-lg md:text-3xl">Sign-up</h1>
+            <div className="flex flex-col md:flex-row items-center justify-between w-full">
+              <label className="mr-40 w-fit tracking-wider text-base md:text-2xl font-light">
                 Email:
               </label>
-              <input
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                type="email"
-                name="Email"
-                className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
-                placeholder="Email"
-              />
+              <div className="flex">
+                <input
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  type="email"
+                  name="Email"
+                  className="tracking-wide text-base md:text-2xl px-1 py-3 border border-slate-500"
+                  placeholder="Email"
+                />
+              </div>
             </div>
-            <div className="flex flex-row items-center justify-between w-full">
-              <label className="mr-44 tracking-wider text-2xl font-light">
+            <div className="flex flex-col md:flex-row items-center justify-between w-full">
+              <label className="mr-32 md:mr-44 tracking-wider text-base md:text-2xl font-light">
                 Password:
               </label>
-              <div className="flex flex-row items-center justify-end">
+              <div className="flex items-center justify-end gap-0">
                 <span
                   className="absolute mr-2 hover:cursor-pointer"
                   onClick={handleHidden}
@@ -71,16 +73,16 @@ function Signup() {
                   ref={textInput}
                   type="password"
                   name="password"
-                  className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
+                  className="tracking-wide text-base md:text-2xl px-1 py-3 border border-slate-500"
                   placeholder="Password"
                 />
               </div>
             </div>
             <button
               disabled={isLoading}
-              className="tracking-wider text-white text-xl bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400 px-32 py-5 my-6"
+              className="tracking-wider text-white text-base md:text-xl bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400 px-10 md:px-32 py-3 md:py-5 my-6"
             >
-              Sign Up
+              Sign up
             </button>
             {error && (
               <div className="tracking-wider text-red-600 font-bold">
