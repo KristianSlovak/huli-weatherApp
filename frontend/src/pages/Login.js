@@ -40,9 +40,9 @@ function Login() {
             className="grid grid-flow-row gap-16 justify-center items-center"
             onSubmit={handleSubmit}
           >
-            <h1 className="py-5 tracking-widest text-3xl">Login</h1>
-            <div className="flex flex-row items-center justify-between w-full">
-              <label className="mr-40 w-fit tracking-wider text-2xl font-light">
+            <h1 className="py-5 tracking-widest text-lg md:text-3xl">Login</h1>
+            <div className="flex flex-col md:flex-row items-center justify-between w-full">
+              <label className="mr-40 w-fit tracking-wider text-base md:text-2xl font-light">
                 Email:
               </label>
               <div className="flex">
@@ -51,13 +51,13 @@ function Login() {
                   value={email}
                   type="email"
                   name="Email"
-                  className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
+                  className="tracking-wide text-base md:text-2xl px-1 py-3 border border-slate-500"
                   placeholder="Email"
                 />
               </div>
             </div>
-            <div className="flex flex-row items-center justify-between w-full">
-              <label className="mr-44 tracking-wider text-2xl font-light">
+            <div className="flex flex-col md:flex-row items-center justify-between w-full">
+              <label className="mr-32 md:mr-44 tracking-wider text-base md:text-2xl font-light">
                 Password:
               </label>
               <div className="flex items-center justify-end gap-0">
@@ -73,14 +73,14 @@ function Login() {
                   ref={textInput}
                   type="password"
                   name="password"
-                  className="tracking-wide text-2xl px-1 py-3 border border-slate-500"
+                  className="tracking-wide text-base md:text-2xl px-1 py-3 border border-slate-500"
                   placeholder="Password"
                 />
               </div>
             </div>
             <button
               disabled={isLoading}
-              className="tracking-wider text-white text-xl bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400 px-32 py-5 my-6"
+              className="tracking-wider text-white text-base md:text-xl bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400 px-10 md:px-32 py-3 md:py-5 my-6"
             >
               Log in
             </button>
