@@ -41,8 +41,8 @@ function Login() {
             onSubmit={handleSubmit}
           >
             <h1 className="py-5 tracking-widest text-lg md:text-3xl">Login</h1>
-            <div className="flex flex-col md:flex-row items-center justify-between w-full">
-              <label className="mr-40 w-fit tracking-wider text-base md:text-2xl font-light">
+            <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
+              <label className="mr-40 pb-2 w-fit tracking-wider text-base md:text-2xl font-light">
                 Email:
               </label>
               <div className="flex">
@@ -56,8 +56,8 @@ function Login() {
                 />
               </div>
             </div>
-            <div className="flex flex-col md:flex-row items-center justify-between w-full">
-              <label className="mr-32 md:mr-44 tracking-wider text-base md:text-2xl font-light">
+            <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
+              <label className="mr-32 pb-2 md:mr-44 tracking-wider text-base md:text-2xl font-light">
                 Password:
               </label>
               <div className="flex items-center justify-end gap-0">
