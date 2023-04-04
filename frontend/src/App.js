@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
-const Main = React.lazy(() => import("./pages/Main"));
+import Main from "./pages/Main";
 export function App() {
   const { user } = useAuthContext();
 
