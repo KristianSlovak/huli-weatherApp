@@ -94,4 +94,4 @@ const iconUrlFromCode = (code) =>
 
 export default getFormattedWeatherData;
 
-export { formatToLocalTime, iconUrlFromCode };
+export { formatToLocalTime, iconUrlFromCode, getFormattedWeatherData };
