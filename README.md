@@ -16,3 +16,5 @@
 - Select Frontend
 - Add environment Dependencies
 - Deploy backend selecting api folder from repository
+
+## [Try the app](https://weather-app-nu-steel.vercel.app/)
