@@ -24,11 +24,11 @@ jobs:
         cache: 'npm'
         
     - name: Install backend dependecies
-      working-directory: ./backend
+      working-directory: ./api
       run: npm install
       
     - name: Test backend
-      working-directory: ./backend
+      working-directory: ./api
       run: npm test
       
       
