@@ -1,0 +1,42 @@
+- name: Cypress.io
+
+on:
+  push:
+    branches: - main
+  pull_request:
+    branches:
+    - main
+jobs: 
+  cypress-run:
+    name: E2E Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+          
+      - name: Install backend dependecies
+        working-directory: ./backend
+        run: npm install
+        
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+        
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          run: npm run dev
+          working-directory: ./backend
+          wait-on: "http://localhost:3001"
+          run: npm start
+          working-directory: ./frontend
+          wait-on: "http://localhost:3000"
+          working-dorectory: ./frontend
+          run: npm run cy:run
+    
+    
