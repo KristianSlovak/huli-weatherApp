@@ -5,8 +5,27 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        working-directory: ./frontend
         uses: actions/checkout@v3
-      - name: Cypress run
+        - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+        - name: Install backend dependecies
+        working-directory: ./backend
+        run: npm install
+
+        - name: Install frontend dependencies
         working-directory: ./frontend
+        run: npm install
+
+        - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
         uses: cypress-io/github-action@v5
+        working-directory: ./frontend
+        run: npm run cy:run
