@@ -60,12 +60,11 @@ function Main() {
         className={`mx-auto max-w-screen-md mt-4 py-5 px-10 md:px-32 bg-gradient-to-br from-cyan-700
       to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
-        <div className="flex justify-between my-6">
+        <div className="flex justify-between my-6 gap-2">
           {cities &&
             cities.map((city) => (
               <div className="flex w-full justify-around items-center">
                 <TopButtons key={city._id} city={city} setQuery={setQuery} />
-                <p className=" text-white">|</p>
               </div>
             ))}
         </div>

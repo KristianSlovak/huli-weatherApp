@@ -14,7 +14,7 @@ function AppBar({ setQuery }) {
 
   return (
     <div
-      className="grid grid-flow-col items-center gap-6 mx-auto w-screen px-5
+      className="grid grid-flow-col items-center gap-6 mx-auto px-5
       md:px-20
     h-20 bg-gradient-to-br from-cyan-600 to-blue-600
     text-white text-base md:text-xl font-medium shadow-lg shadow-gray-400"

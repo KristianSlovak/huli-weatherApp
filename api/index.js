@@ -29,12 +29,7 @@ app.use("/api/cities", cityRoutes);
 mongoose
   .connect(process.env.SERVER_SIDE_CONNECTION)
   .then(() => {
-    app.listen(process.env.SERVER_SIDE_PORT, () => {
-      console.log(
-        "connected to db & listening to port",
-        process.env.SERVER_SIDE_PORT
-      );
-    });
+    app.listen(process.env.SERVER_SIDE_PORT);
   })
   .catch((error) => {
     console.log(error);
