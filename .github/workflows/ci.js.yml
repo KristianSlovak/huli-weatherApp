@@ -1,9 +1,11 @@
 name: End-to-End testing
+
 on:
  push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+    
 jobs:
   cypress-run:
    runs-on: ubuntu-latest
