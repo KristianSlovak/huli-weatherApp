@@ -1,11 +1,10 @@
-- name: Cypress.io
+name: Cypress.io
 
 on:
   push:
-    branches: - main
+    branches: [main]
   pull_request:
-    branches:
-    - main
+    branches: [main]
 jobs: 
   cypress-run:
     name: E2E Testing
@@ -27,15 +26,18 @@ jobs:
         working-directory: ./frontend
         run: npm install
         
+      - name: Backend Run
+        working-directory: ./backend
+        run: npm run dev
+        
+      - name: Frontend Run
+        working-directory: ./frontend
+        run: npm start
+        
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          run: npm run dev
-          working-directory: ./backend
-          wait-on: "http://localhost:3001"
-          run: npm start
-          working-directory: ./frontend
-          wait-on: "http://localhost:3000"
+          wait-on: http://localhost:3001,http://localhost:3000
           working-dorectory: ./frontend
           run: npm run cy:run
     
