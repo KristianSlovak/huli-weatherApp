@@ -42,5 +42,8 @@ jobs:
           process.env.REACT_APP_PROXY: ${{ vars.REACT_APP_PROXY }}
         
       - name: Cypress run
-        working-directory: ./frontend
-        run: npm run cy:run --headed --browser chrome
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm start
+          browser: chrome
