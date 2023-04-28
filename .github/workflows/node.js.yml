@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -15,31 +15,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: "18"
-        cache: 'npm'
-        
-    - name: Install backend dependecies
-      working-directory: ./backend
-      run: npm install
-      
-    - name: Test backend
-      working-directory: ./backend
-      run: npm test
-      
-      
-    - name: Install frontend dependencies
-      working-directory: ./frontend
-      run: npm install
-      
-    - name: Build frontend
-      working-directory: ./frontend
-      run: npm run build
-      
-#     - name: Test frontend
-#       working-directory: ./frontend
-#       run: npm test
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install backend dependecies
+        working-directory: ./backend
+        run: npm install
+
+      - name: Test backend
+        working-directory: ./backend
+        run: npm test
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build

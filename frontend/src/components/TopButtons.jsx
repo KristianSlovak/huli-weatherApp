@@ -26,7 +26,7 @@ export default function TopButtons({ city, setQuery }) {
     }
   };
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       <button
         className="text-white text-base md:text-lg font-medium"
         onClick={() => setQuery({ q: city.cityName })}
