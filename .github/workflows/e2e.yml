@@ -9,33 +9,24 @@ jobs:
   cypress:
     runs-on: ubuntu-latest
 
-    services:
-      backend:
-        image: node:14
-        ports:
-          - 3001:3001
-        options: >-
-          --mount type=bind,source=$(pwd)/backend,target=/app
-        env:
-          NODE_ENV: development
-        run: npm run dev
-
-      frontend:
-        image: node:14
-        ports:
-          - 3000:3000
-        options: >-
-          --mount type=bind,source=$(pwd)/frontend,target=/app
-        env:
-          NODE_ENV: development
-        run: npm start
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Start backend
+        run: |
+          cd backend
+          npm run dev &
+          sleep 5
+
+      - name: Start frontend
+        run: |
+          cd frontend
+          npm start &
+          sleep 5
 
       - name: Wait for services to be ready
         run: |
