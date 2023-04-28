@@ -34,7 +34,8 @@ jobs:
           process.env.SERVER_SIDE_FRONTEND_APP: ${{ secrets.SERVER_SIDE_FRONTEND_APP }}
 
       - name: Start frontend server
-        run: cd frontend && npm start
+        run: cd frontend && npm start --silent &
+        timeout-minutes: 5
         env: 
           process.env.REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
           process.env.REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
