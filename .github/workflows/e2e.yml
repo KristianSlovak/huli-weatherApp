@@ -42,7 +42,6 @@ jobs:
           process.env.REACT_APP_PROXY: ${{ vars.REACT_APP_PROXY }}
         
       - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          working-directory: ./frontend
-          browser: chrome
+        working-directory: ./frontend
+        run: npm run cy:run
+
