@@ -41,6 +41,5 @@ jobs:
           process.env.REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
           process.env.REACT_APP_PROXY: ${{ vars.REACT_APP_PROXY }}
         
-      - name: Run Cypress tests
-        working-directory: ./frontend
-        run: npm run cy:run
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
