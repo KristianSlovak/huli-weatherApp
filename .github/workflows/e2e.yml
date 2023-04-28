@@ -25,7 +25,7 @@ jobs:
         run: npm install
           
       - name: Start backend server
-        run: cd backend && npm run dev
+        run: cd backend && npm start
         env: 
           process.env.SERVER_SIDE_PORT: ${{ vars.SERVER_SIDE_PORT }}
           process.env.SERVER_SIDE_DATABASE: ${{ secrets.SERVER_SIDE_DATABASE }}
