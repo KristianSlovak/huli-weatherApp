@@ -1,45 +1,51 @@
-name: Cypress.io
+name: Cypress CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-jobs: 
-  cypress-run:
-    name: E2E Testing
+    branches:
+      - main
+
+jobs:
+  cypress:
     runs-on: ubuntu-latest
-    
+
+    services:
+      backend:
+        image: node:14
+        ports:
+          - 3001:3001
+        options: >-
+          --mount type=bind,source=$(pwd)/backend,target=/app
+        env:
+          NODE_ENV: development
+        command: npm run dev
+
+      frontend:
+        image: node:14
+        ports:
+          - 3000:3000
+        options: >-
+          --mount type=bind,source=$(pwd)/frontend,target=/app
+        env:
+          NODE_ENV: development
+        command: npm start
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@3
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Wait for services to be ready
+        run: |
+          while ! nc -z localhost 3001; do sleep 1; done
+          while ! nc -z localhost 3000; do sleep 1; done
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v2
         with:
-          node-version: "18"
-          cache: "npm"
-          
-      - name: Install backend dependecies
-        working-directory: ./backend
-        run: npm install
-        
-      - name: Install frontend dependencies
-        working-directory: ./frontend
-        run: npm install
-        
-      - name: Backend Run
-        working-directory: ./backend
-        run: npm run dev
-        
-      - name: Frontend Run
-        working-directory: ./frontend
-        run: npm start
-        
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          wait-on: http://localhost:3001,http://localhost:3000
-          working-dorectory: ./frontend
-          run: npm run cy:run
-    
-    
+          browser: chrome
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          spec: 'cypress/integration/**/*.spec.js'
