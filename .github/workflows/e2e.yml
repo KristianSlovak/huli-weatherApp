@@ -30,9 +30,10 @@ jobs:
 
       - name: Wait for services to be ready
         run: |
-          apt-get update && apt-get install -y wait-for-it
-          wait-for-it localhost:3001 -t 300 -- echo "Backend is ready"
-          wait-for-it localhost:3000 -t 300 -- echo "Frontend is ready"
+          apt-get update && apt-get install -y wget
+          wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz
+          tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.6.1.tar.gz
+          dockerize -wait tcp://localhost:3001 -wait tcp://localhost:3000 -timeout 300s
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
