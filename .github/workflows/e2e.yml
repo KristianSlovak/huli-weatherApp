@@ -18,7 +18,7 @@ jobs:
           --mount type=bind,source=$(pwd)/backend,target=/app
         env:
           NODE_ENV: development
-        command: npm run dev
+        run: npm run dev
 
       frontend:
         image: node:14
@@ -28,7 +28,7 @@ jobs:
           --mount type=bind,source=$(pwd)/frontend,target=/app
         env:
           NODE_ENV: development
-        command: npm start
+        run: npm start
 
     steps:
       - name: Checkout code
