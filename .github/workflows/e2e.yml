@@ -43,4 +43,4 @@ jobs:
         
       - name: Cypress run
         working-directory: ./frontend
-        run: npm run cy:run
+        run: npm run cy:run --browser chrome
