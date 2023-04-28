@@ -27,18 +27,18 @@ jobs:
       - name: Start backend server
         run: cd backend && npm run dev
         env: 
-          process.env.SERVER_SIDE_PORT: ${{variables.SERVER_SIDE_PORT}}
-          process.env.SERVER_SIDE_DATABASE: ${{secrets.SERVER_SIDE_DATABASE}}
-          process.env.SERVER_SIDE_CONNECTION: ${{secrets.SERVER_SIDE_CONNECTION}}
-          process.env.SERVER_SIDE_SECRET: ${{secrets.SERVER_SIDE_SECRET}}
-          process.env.SERVER_SIDE_FRONTEND_APP: ${{secrets.SERVER_SIDE_FRONTEND_APP}}
+          process.env.SERVER_SIDE_PORT: ${{ vars.SERVER_SIDE_PORT }}
+          process.env.SERVER_SIDE_DATABASE: ${{ secrets.SERVER_SIDE_DATABASE }}
+          process.env.SERVER_SIDE_CONNECTION: ${{ secrets.SERVER_SIDE_CONNECTION }}
+          process.env.SERVER_SIDE_SECRET: ${{ secrets.SERVER_SIDE_SECRET }}
+          process.env.SERVER_SIDE_FRONTEND_APP: ${{ secrets.SERVER_SIDE_FRONTEND_APP }}
 
       - name: Start frontend server
         run: cd frontend && npm start
         env: 
-          process.env.REACT_APP_API_KEY: ${{secrets.REACT_APP_API_KEY}}
-          process.env.REACT_APP_BASE_URL: ${{secrets.REACT_APP_BASE_URL}}
-          process.env.REACT_APP_PROXY: ${{variables.REACT_APP_PROXY}}
+          process.env.REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          process.env.REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+          process.env.REACT_APP_PROXY: ${{ vars.REACT_APP_PROXY }}
         
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
