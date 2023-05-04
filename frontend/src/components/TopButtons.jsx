@@ -1,7 +1,7 @@
-import React from "react";
 import { UilTrashAlt } from "@iconscout/react-unicons";
-import { useCitiesContext } from "../hooks/useCitiesContext";
+import React from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useCitiesContext } from "../hooks/useCitiesContext";
 
 export default function TopButtons({ city, setQuery }) {
   const { dispatch } = useCitiesContext();

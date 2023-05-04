@@ -1,11 +1,11 @@
-import React from "react";
 import {
-  UilTemperature,
-  UilTear,
-  UilWind,
   UilSun,
   UilSunset,
+  UilTear,
+  UilTemperature,
+  UilWind,
 } from "@iconscout/react-unicons";
+import React from "react";
 import { formatToLocalTime, iconUrlFromCode } from "../hooks/useWeatherData";
 function TemperatureAndDetails({
   weather: {

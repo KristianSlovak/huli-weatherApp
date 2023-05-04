@@ -1,6 +1,5 @@
-import React from "react";
-import { UilSearch, UilMapMarkerAlt } from "@iconscout/react-unicons";
-import { useState } from "react";
+import { UilMapMarkerAlt, UilSearch } from "@iconscout/react-unicons";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
