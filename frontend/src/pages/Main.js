@@ -1,13 +1,13 @@
-import TopButtons from "../components/TopButtons";
-import AppBar from "../components/AppBar";
-import Inputs from "../components/Inputs";
-import TimeAndLocation from "../components/TimeAndLocation";
-import TemperatureAndDetails from "../components/TemperatureAndDetails";
-import Forecast from "../components/Forecast";
-import getFormattedWeatherData from "../hooks/useWeatherData";
 import { useEffect, useState } from "react";
+import AppBar from "../components/AppBar";
+import Forecast from "../components/Forecast";
+import Inputs from "../components/Inputs";
+import TemperatureAndDetails from "../components/TemperatureAndDetails";
+import TimeAndLocation from "../components/TimeAndLocation";
+import TopButtons from "../components/TopButtons";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCitiesContext } from "../hooks/useCitiesContext";
+import getFormattedWeatherData from "../hooks/useWeatherData";
 
 function Main() {
   const { user } = useAuthContext();
@@ -57,8 +57,7 @@ function Main() {
     <div>
       <AppBar setQuery={setQuery} />
       <div
-        className={`mx-auto max-w-screen-md mt-4 py-5 px-10 md:px-32 bg-gradient-to-br from-cyan-700
-      to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
+        className={`mx-auto max-w-screen-md mt-4 py-5 px-10 md:px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
         <div className="flex justify-between my-6 gap-2">
           {cities &&

@@ -1,8 +1,9 @@
+import { UilEstate } from "@iconscout/react-unicons";
 import React from "react";
 import { Link } from "react-router-dom";
-import { UilEstate } from "@iconscout/react-unicons";
-import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/useLogout";
+
 function AppBar({ setQuery }) {
   const { logout } = useLogout();
   const { user } = useAuthContext();
@@ -13,12 +14,7 @@ function AppBar({ setQuery }) {
   };
 
   return (
-    <div
-      className="grid grid-flow-col items-center gap-6 mx-auto px-5
-      md:px-20
-    h-20 bg-gradient-to-br from-cyan-600 to-blue-600
-    text-white text-base md:text-xl font-medium shadow-lg shadow-gray-400"
-    >
+    <div className="grid grid-flow-col items-center gap-6 mx-auto px-5 md:px-20 h-20 bg-gradient-to-br from-cyan-600 to-blue-600 text-white text-base md:text-xl font-medium shadow-lg shadow-gray-400">
       <div className="justify-self-start">
         <Link to="/">
           <UilEstate className="w-7 h-7 hover:text-sky-800 transition ease-out md:w-10 md:h-10" />

@@ -1,10 +1,8 @@
-import React from "react";
-import { useRef } from "react";
 import { UilEyeSlash } from "@iconscout/react-unicons";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AppBar from "../components/AppBar";
 import { useLogin } from "../hooks/useLogin";
-import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");

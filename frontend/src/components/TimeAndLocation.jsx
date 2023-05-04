@@ -1,9 +1,8 @@
-import React from "react";
-import { formatToLocalTime } from "../hooks/useWeatherData";
 import { UilPlusCircle } from "@iconscout/react-unicons";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCitiesContext } from "../hooks/useCitiesContext";
-import { useState, useEffect } from "react";
+import { formatToLocalTime } from "../hooks/useWeatherData";
 
 function TimeAndLocation({ weather: { dt, timezone, name, country } }) {
   const { user } = useAuthContext();

@@ -1,9 +1,10 @@
 import * as React from "react";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Login from "./pages/Login";
 import Main from "./pages/Main";
+import Signup from "./pages/Signup";
+
 export function App() {
   const { user } = useAuthContext();
 
